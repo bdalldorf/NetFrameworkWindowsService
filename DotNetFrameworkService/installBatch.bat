@@ -1,6 +1,6 @@
 @echo off
 
-set Directory="D:\Development\DotNetFrameworkService\DotNetFrameworkService\bin\Release\DotNetFrameworkService.exe"
+set Directory="FilePath.exe"
 set ServiceName=Notification Service
 
 goto check_permissions
