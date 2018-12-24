@@ -22,13 +22,13 @@ namespace DotNetFrameworkService
 
                 HostFactory.Run(hostFactory =>
                 {
-                    hostFactory.Service<ServiceToImplement>(notificationService =>
+                    hostFactory.Service<ServiceToImplement>(serviceToImplement =>
                     {
-                        notificationService.ConstructUsing(name => new ServiceToImplement());
-                        notificationService.WhenStarted(ns => ns.Start());
-                        notificationService.WhenStopped(ns => ns.Stop());
-                        notificationService.WhenPaused(ns => ns.Pause());
-                        notificationService.WhenContinued(ns => ns.Continue());
+                        serviceToImplement.ConstructUsing(name => new ServiceToImplement());
+                        serviceToImplement.WhenStarted(ns => ns.Start());
+                        serviceToImplement.WhenStopped(ns => ns.Stop());
+                        serviceToImplement.WhenPaused(ns => ns.Pause());
+                        serviceToImplement.WhenContinued(ns => ns.Continue());
                     });
 
                     hostFactory.SetDescription("Notification Service");
@@ -68,8 +68,8 @@ namespace DotNetFrameworkService
             }
 #else
             Log.Info("Notification Service Debug Session Started");
-            NotificationService NotificationService = new NotificationService();
-            NotificationService.Debug();
+            ServiceToImplement ServiceToImplement = new ServiceToImplement();
+            ServiceToImplement.Debug();
 #endif
         }
     }
